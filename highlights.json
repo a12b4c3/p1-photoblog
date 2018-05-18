@@ -1,0 +1,21 @@
+[
+
+{
+"src" : "https://goo.gl/bDdC3w", // test picture
+"title" : "Day 1: Short Title",
+"desc" : "Stanley Park, QE Park, Richmond Oval, Chinatown, Metrotown, UBC"
+},
+
+{
+"src" : "https://goo.gl/bDdC3w", // test picture
+"title" : "Day 2: Longer title With More Words",
+"desc" : "Stanley Park, QE Park, Richmond Oval, Chinatown, Metrotown, UBC"
+},
+
+{
+"src" : "https://goo.gl/bDdC3w", // test picture
+"title" : "Day 3: Medium title Words",
+"desc" : "Stanley Park, QE Park, Richmond Oval, Chinatown, Metrotown, UBC"
+}
+
+]
