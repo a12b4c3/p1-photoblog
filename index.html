@@ -5,7 +5,7 @@
 
 <head>
 <meta charset="utf-8"/>
-<title>test photoblog</title>
+<title>test blog</title>
 <link rel="stylesheet" type="text/css" href="styles.css">
 <script type="text/javascript" src="functions.js"></script>
 <script type="text/javascript" src="highlights.json"></script>
@@ -13,7 +13,7 @@
 </head>
 
 
-<body>
+<body onload="getHighlights()">
 <!-- container for the top menu bar -->
 <div class="top-menu-container">
 <a href=#> <img id="profile-picture" src="https://goo.gl/4W6zSW" alt="profile picture"> </a>
@@ -48,7 +48,7 @@ Hope you enjoy them! A collection from across the globe!
 </div>
 
 <!-- highlight container holds the pictures only -->
-<div class="highlights-container">
+<div class="highlights-container" id="highlights-container">
 
 <div id="highlight1">
 <a href="#"><img src="https://goo.gl/bDdC3w" alt="sample img" ></a>
@@ -68,13 +68,7 @@ Hope you enjoy them! A collection from across the globe!
 <div id="highlight3-desc">This is a short descriptionf of the current highlight, usually about two or so sentences</div>
 </div>
 
-<!--
-<script>
-$(document).ready( getHighlights() ); //runs only when the html finishes loading.
-</script>
 
-
--->
 </div>
 
 </body>
