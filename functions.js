@@ -115,8 +115,8 @@ function getHighlights(){
 			var bgGreenChannel = 255;
 			var bgBlueChannel = 255;
 			
-			
-			// for ColorThief
+			/*
+			// for ColorThief - remove code block to disable
 			var img = document.createElement("img");
 			img.src = src;
 			console.log(img.width);
@@ -124,7 +124,7 @@ function getHighlights(){
 			bgRedChannel = bgColor[0];
 			bgGreenChannel = bgColor[1];
 			bgBlueChannel = bgColor[2];
-	
+			*/
 			
 			
 			// creates the CSS rules for each highlight
