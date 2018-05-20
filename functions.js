@@ -119,7 +119,8 @@ function getHighlights(){
 			
 			// for ColorThief - remove code block to disable
 			img.src = src;
-			console.log(img.width);
+			img.addEventListener("load", console.log(img.width));
+		
 			bgColor = colorThief.getColor(img);
 			bgRedChannel = bgColor[0];
 			bgGreenChannel = bgColor[1];
@@ -130,7 +131,7 @@ function getHighlights(){
 			// creates the CSS rules for each highlight
 			createHighlightCSS(myStyle, idNumber, bgRedChannel, bgGreenChannel, bgBlueChannel);
 			
-			
+			// creates the unique containers for each highlight
 			html += `<div id="highlight${idNumber}">`;
 			html += `<a href="${href}"><img src="${src}" alt="${title}" ></a>`;
 			html += `<div id="highlight${idNumber}-title">${title}</div>`;
