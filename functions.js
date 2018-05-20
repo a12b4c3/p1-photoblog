@@ -119,8 +119,9 @@ function getHighlights(){
 			
 			// for ColorThief - remove code block to disable
 			
-			img.addEventListener("load", img.src = src);
-			console.log(img.width);
+			img.addEventListener("load", console.log(img.width));
+			img.src = src;
+			
 			bgColor = colorThief.getColor(img);
 			bgRedChannel = bgColor[0];
 			bgGreenChannel = bgColor[1];
