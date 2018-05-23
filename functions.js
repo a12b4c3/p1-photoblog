@@ -78,6 +78,7 @@ xmlhttp.send();
                       //innerHTML <-> insertAdjacentHTML version of getHighlights()//
 
 function getHighlights(){
+	console.log("build 2018-05-22 7:02pm")
 	var colorThief = new ColorThief(); // For colorthief to get average color
 	var img = document.createElement("img");  // For colorthief to get average color
 	var highlightsJSON = "highlights.json";
@@ -115,6 +116,7 @@ function getHighlights(){
 			var bgRedChannel = 255;
 			var bgGreenChannel = 255;
 			var bgBlueChannel = 255;
+			var bgColor;
 			
 			
 			// for ColorThief - remove code block to disable
@@ -122,16 +124,14 @@ function getHighlights(){
 			img.src = src;
 			
 			
-			// creates divs only after loaded
+			img.addEventListener("load", bgColor = colorThief.getColor(img));
 			
-			img.addEventListener("load", createHighlightHTML(idNumber, href, title, desc, src));
-			
-			
-			bgColor = colorThief.getColor(img);
 			bgRedChannel = bgColor[0];
 			bgGreenChannel = bgColor[1];
 			bgBlueChannel = bgColor[2];
 			
+			// creates divs only after loaded
+			createHighlightHTML(idNumber, href, title, desc, src)
 			
 			
 			// creates the CSS rules for each highlight
