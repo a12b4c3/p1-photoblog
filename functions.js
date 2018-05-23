@@ -106,7 +106,7 @@ function getHighlights(){
 		
 		
 		for(var i = 0; i< myArrLength; i++){
-			var html = "";
+			
 			var idNumber = i+1;
 			var src = myArr[i].src;
 			var title = myArr[i].title;
@@ -118,9 +118,14 @@ function getHighlights(){
 			
 			
 			// for ColorThief - remove code block to disable
-			
-			img.addEventListener("load", console.log(img.width));
+			// creates the unique containers for each highlight
 			img.src = src;
+			
+			
+			// creates divs only after loaded
+			
+			img.addEventListener("load", createHighlightHTML(idNumber, href, title, desc, src));
+			
 			
 			bgColor = colorThief.getColor(img);
 			bgRedChannel = bgColor[0];
@@ -132,13 +137,7 @@ function getHighlights(){
 			// creates the CSS rules for each highlight
 			createHighlightCSS(myStyle, idNumber, bgRedChannel, bgGreenChannel, bgBlueChannel);
 			
-			// creates the unique containers for each highlight
-			html += `<div id="highlight${idNumber}">`;
-			html += `<a href="${href}"><img src="${src}" alt="${title}" ></a>`;
-			html += `<div id="highlight${idNumber}-title">${title}</div>`;
-			html += `<div id="highlight${idNumber}-desc">${desc}</div>`;
-			html += `</div>\n`
-			document.getElementById("highlights-container").insertAdjacentHTML("beforeend", html);
+			
 		}
 		
     }
@@ -147,7 +146,17 @@ xmlhttp.open("GET", highlightsJSON, true);
 xmlhttp.send(); 
 }
 
-
+function createHighlightHTML(idNumber, href, title, desc, src){
+	
+	var html = "";
+	html += `<div id="highlight${idNumber}">`;
+	html += `<a href="${href}"><img src="${src}" alt="${title}" ></a>`;
+	html += `<div id="highlight${idNumber}-title">${title}</div>`;
+	html += `<div id="highlight${idNumber}-desc">${desc}</div>`;
+	html += `</div>\n`
+	document.getElementById("highlights-container").insertAdjacentHTML("beforeend", html);
+			
+}
 
 
 
