@@ -211,14 +211,15 @@ function createHighlightHTML(idNumber, href, title, desc, src){
 */
 
 function createHighlightCSS(myStyle, idNumber, bgRedChannel, bgGreenChannel, bgBlueChannel, img){
+	console.log(img.width);
 	var widthAndHeight = "300px";
 	var titleFontSize = "1.6em";
 	var colorThief = new ColorThief(); // For colorthief to get average color
 	bgColor = colorThief.getColor(img)
-			bgRedChannel = bgColor[0];
-			bgGreenChannel = bgColor[1];
-			bgBlueChannel = bgColor[2];
-			console.log(bgColor);
+	bgRedChannel = bgColor[0];
+	bgGreenChannel = bgColor[1];
+	bgBlueChannel = bgColor[2];
+	console.log(bgColor);
 	
 	
 	myStyle.insertRule(
