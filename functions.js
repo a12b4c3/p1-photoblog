@@ -77,9 +77,12 @@ xmlhttp.send();
 
                       //innerHTML <-> insertAdjacentHTML version of getHighlights()//
 
+					  
+var bgColor;					  					  
+					  
 function getHighlights(){
-	console.log("build 2018-05-22 7:13pm")
-	var colorThief = new ColorThief(); // For colorthief to get average color
+	console.log("build 2018-05-23 11:44pm")
+	
 	var img = document.createElement("img");  // For colorthief to get average color
 	var highlightsJSON = "highlights.json";
 	var xmlhttp = new XMLHttpRequest();
@@ -93,8 +96,6 @@ function getHighlights(){
 		// loads the current stylesheet as a variable
 		var myStyle = document.styleSheets[0]; 
 		
-	
-	
 		
 		// HTML Template to create each highlight box
 		
@@ -116,7 +117,7 @@ function getHighlights(){
 			var bgRedChannel = 255;
 			var bgGreenChannel = 255;
 			var bgBlueChannel = 255;
-			var bgColor;
+			
 			
 			
 			// for ColorThief - remove code block to disable
@@ -124,19 +125,16 @@ function getHighlights(){
 			img.src = src;
 			
 			
-			img.addEventListener("load", console.log(img.width));
-			
-			bgColor = colorThief.getColor(img)
-			bgRedChannel = bgColor[0];
-			bgGreenChannel = bgColor[1];
-			bgBlueChannel = bgColor[2];
+			img.addEventListener("load", createHighlightCSS(myStyle, idNumber, bgRedChannel, bgGreenChannel, bgBlueChannel, img));
 			
 			// creates divs only after loaded
-			createHighlightHTML(idNumber, href, title, desc, src)
+			createHighlightHTML(idNumber, href, title, desc, src);
+			
 			
 			
 			// creates the CSS rules for each highlight
-			createHighlightCSS(myStyle, idNumber, bgRedChannel, bgGreenChannel, bgBlueChannel);
+			
+			
 			
 			
 		}
@@ -212,10 +210,17 @@ function createHighlightHTML(idNumber, href, title, desc, src){
 
 */
 
-function createHighlightCSS(myStyle, idNumber, bgRedChannel, bgGreenChannel, bgBlueChannel){
+function createHighlightCSS(myStyle, idNumber, bgRedChannel, bgGreenChannel, bgBlueChannel, img){
 	var widthAndHeight = "300px";
 	var titleFontSize = "1.6em";
-
+	var colorThief = new ColorThief(); // For colorthief to get average color
+	bgColor = colorThief.getColor(img)
+			bgRedChannel = bgColor[0];
+			bgGreenChannel = bgColor[1];
+			bgBlueChannel = bgColor[2];
+			console.log(bgColor);
+	
+	
 	myStyle.insertRule(
 	`#highlight${idNumber} {
 		position: relative; 
