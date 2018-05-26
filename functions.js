@@ -81,7 +81,7 @@ xmlhttp.send();
 var bgColor;					  					  
 					  
 function getHighlights(){
-	console.log("build 2018-05-23 11:44pm")
+	console.log("build 2018-05-25 8:19pm")
 	
 	var img = document.createElement("img");  // For colorthief to get average color
 	var highlightsJSON = "highlights.json";
@@ -125,22 +125,19 @@ function getHighlights(){
 			img.src = src;
 			
 			
-			img.addEventListener("load", createHighlightCSS(myStyle, idNumber, bgRedChannel, bgGreenChannel, bgBlueChannel, img));
+			img.addEventListener("load", function() {
+
+			createHighlightCSS(myStyle, idNumber, bgRedChannel, bgGreenChannel, bgBlueChannel, img);
 			
 			// creates divs only after loaded
 			createHighlightHTML(idNumber, href, title, desc, src);
-			
-			
-			
-			// creates the CSS rules for each highlight
-			
-			
+			});
 			
 			
 		}
 		
     }
-};
+}
 xmlhttp.open("GET", highlightsJSON, true);
 xmlhttp.send(); 
 }
@@ -210,6 +207,7 @@ function createHighlightHTML(idNumber, href, title, desc, src){
 
 */
 
+// creates the CSS rules for each highlight
 function createHighlightCSS(myStyle, idNumber, bgRedChannel, bgGreenChannel, bgBlueChannel, img){
 	console.log(img.width);
 	var widthAndHeight = "300px";
