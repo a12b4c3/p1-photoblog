@@ -2,6 +2,7 @@
 
 /*
                       // DOM Manipulation version of getHighlights //
+					  // DEPRECATED AND OUTDATED                   //
 function getHighlights(){
 	var highlightsJSON = "highlights.json";
 	var xmlhttp = new XMLHttpRequest();
@@ -82,13 +83,12 @@ var bgColor;
 					  
 function getHighlights(){
 	console.log("build 2018-05-25 11:57pm");
-	
+	document.getElementById("highlights-container").innerHTML = "";
 	var highlightsJSON = "highlights.json";
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         var myArr = JSON.parse(this.responseText);
-		// var html = "";
 		var myArrLength = myArr.length;
 		
 		// loads the current stylesheet as a variable
@@ -102,8 +102,6 @@ function getHighlights(){
 		// <div id="highlightXXX-title">XXX</div>
 		// <div id="highlight1-descXXX">XXX</div>
 		// </div>
-		
-
 		
 		
 		for(let i = 0; i< myArrLength; i++){
@@ -120,10 +118,12 @@ function getHighlights(){
 			
 			
 			
-			// for ColorThief - remove code block to disable
-			// creates the unique containers for each highlight
+			// for ColorThief creates the unique containers for each highlight
 			img.src = src;
 			
+			// for listener to work, need to call function directly, or preferably using
+			// an anonymous function like this. Otherwise calling fn() will cause it to run
+			// immediately.
 			img.addEventListener("load", function() {
 
 			createHighlightHTML(idNumber, href, title, desc, src);
