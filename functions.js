@@ -81,16 +81,14 @@ xmlhttp.send();
 var bgColor;					  					  
 					  
 function getHighlights(){
-	console.log("build 2018-05-25 8:19pm")
+	console.log("build 2018-05-25 11:57pm");
 	
-	var img = document.createElement("img");  // For colorthief to get average color
 	var highlightsJSON = "highlights.json";
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         var myArr = JSON.parse(this.responseText);
 		// var html = "";
-		var currentElement = "";
 		var myArrLength = myArr.length;
 		
 		// loads the current stylesheet as a variable
@@ -105,18 +103,20 @@ function getHighlights(){
 		// <div id="highlight1-descXXX">XXX</div>
 		// </div>
 		
+
 		
 		
-		for(var i = 0; i< myArrLength; i++){
+		for(let i = 0; i< myArrLength; i++){
 			
-			var idNumber = i+1;
-			var src = myArr[i].src;
-			var title = myArr[i].title;
-			var desc = myArr[i].desc;
-			var href = myArr[i].href;
-			var bgRedChannel = 255;
-			var bgGreenChannel = 255;
-			var bgBlueChannel = 255;
+			let img = document.createElement("img");  // For colorthief to get average color
+			let idNumber = i+1;
+			let src = myArr[i].src;
+			let title = myArr[i].title;
+			let desc = myArr[i].desc;
+			let href = myArr[i].href;
+			let bgRedChannel = 255;
+			let bgGreenChannel = 255;
+			let bgBlueChannel = 255;
 			
 			
 			
@@ -124,20 +124,18 @@ function getHighlights(){
 			// creates the unique containers for each highlight
 			img.src = src;
 			
-			
 			img.addEventListener("load", function() {
 
-			createHighlightCSS(myStyle, idNumber, bgRedChannel, bgGreenChannel, bgBlueChannel, img);
-			
-			// creates divs only after loaded
 			createHighlightHTML(idNumber, href, title, desc, src);
-			});
+			createHighlightCSS(myStyle, idNumber, bgRedChannel, bgGreenChannel, bgBlueChannel, img);
+	
 			
+			});
 			
 		}
 		
     }
-}
+};
 xmlhttp.open("GET", highlightsJSON, true);
 xmlhttp.send(); 
 }
